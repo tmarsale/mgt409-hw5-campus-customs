@@ -1,0 +1,271 @@
+{
+  "description": "Payments proposed by the agent team and what a human decided.",
+  "approvals": [
+    {
+      "id": "appr-6e62d709",
+      "status": "executed",
+      "kind": "rent",
+      "label": "Rent payment",
+      "ref_id": 1,
+      "amount": 2400.0,
+      "reason": "Rent is due 2026-09-02 and is the priority bill. The payment preview leaves $1,000 after rent.",
+      "proposed_at": "2026-10-31T04:55:00+00:00",
+      "proposed_by": "agent team",
+      "ticket_ids": [
+        101
+      ],
+      "run_ids": [
+        "run-20261031T045450Z-5c60e4"
+      ],
+      "decided_at": "2026-10-31T04:55:24+00:00",
+      "decided_by": "Tejesh Marsale",
+      "outcome": {
+        "executed": true,
+        "payment_id": 1,
+        "kind": "rent",
+        "ref_id": 1,
+        "amount": 2400.0,
+        "account": "checking",
+        "balance_after": 1000.0,
+        "approved_by": "Tejesh Marsale",
+        "paid_at": "2026-08-31"
+      }
+    },
+    {
+      "id": "appr-e97331ad",
+      "status": "executed",
+      "kind": "invoice",
+      "label": "Vendor invoice (purchase) payment",
+      "ref_id": 501,
+      "amount": 840.0,
+      "reason": "Overdue invoice for the rush reprint of the requested, currently out-of-stock CC-TEE-WHITE size S. After rent, the preview leaves $160.",
+      "proposed_at": "2026-10-31T04:55:00+00:00",
+      "proposed_by": "agent team",
+      "ticket_ids": [
+        101
+      ],
+      "run_ids": [
+        "run-20261031T045450Z-5c60e4"
+      ],
+      "decided_at": "2026-10-31T04:55:27+00:00",
+      "decided_by": "Tejesh Marsale",
+      "outcome": {
+        "executed": true,
+        "payment_id": 2,
+        "kind": "invoice",
+        "ref_id": 501,
+        "amount": 840.0,
+        "account": "checking",
+        "balance_after": 160.0,
+        "approved_by": "Tejesh Marsale",
+        "paid_at": "2026-08-31"
+      }
+    },
+    {
+      "id": "appr-1870cc52",
+      "status": "rejected",
+      "kind": "rent",
+      "label": "Rent payment",
+      "ref_id": 1,
+      "amount": 2400.0,
+      "reason": "Rent is due 2026-09-02; the rent-only payment preview is valid and rent has priority.",
+      "proposed_at": "2026-10-31T04:55:48+00:00",
+      "proposed_by": "agent team",
+      "ticket_ids": [
+        102
+      ],
+      "run_ids": [
+        "run-20261031T045540Z-b2871f"
+      ],
+      "decided_at": "2026-10-31T04:55:51+00:00",
+      "decided_by": "Tejesh Marsale",
+      "outcome": {
+        "reason": "route test"
+      }
+    },
+    {
+      "id": "appr-8def5a65",
+      "status": "executed",
+      "kind": "rent",
+      "label": "Rent payment",
+      "ref_id": 1,
+      "amount": 2400.0,
+      "reason": "Rent is due 2026-09-02 and is the priority bill. The payment preview leaves $1,000 after rent.",
+      "proposed_at": "2026-10-31T05:12:56+00:00",
+      "proposed_by": "agent team",
+      "ticket_ids": [
+        101,
+        102
+      ],
+      "run_ids": [
+        "run-20261031T051245Z-f67b34",
+        "run-20261031T051400Z-662f03"
+      ],
+      "decided_at": "2026-10-31T05:14:43+00:00",
+      "decided_by": "Dashboard Test",
+      "outcome": {
+        "executed": true,
+        "payment_id": 1,
+        "kind": "rent",
+        "ref_id": 1,
+        "amount": 2400.0,
+        "account": "checking",
+        "balance_after": 1000.0,
+        "approved_by": "Dashboard Test",
+        "paid_at": "2026-08-31"
+      }
+    },
+    {
+      "id": "appr-99649ec9",
+      "status": "executed",
+      "kind": "invoice",
+      "label": "Vendor invoice (purchase) payment",
+      "ref_id": 501,
+      "amount": 840.0,
+      "reason": "Overdue invoice for the rush reprint of the requested, currently out-of-stock CC-TEE-WHITE size S. After rent, the preview leaves $160.",
+      "proposed_at": "2026-10-31T05:12:56+00:00",
+      "proposed_by": "agent team",
+      "ticket_ids": [
+        101
+      ],
+      "run_ids": [
+        "run-20261031T051245Z-f67b34"
+      ],
+      "decided_at": "2026-10-31T05:15:12+00:00",
+      "decided_by": "Dashboard Test",
+      "outcome": {
+        "executed": true,
+        "payment_id": 2,
+        "kind": "invoice",
+        "ref_id": 501,
+        "amount": 840.0,
+        "account": "checking",
+        "balance_after": 160.0,
+        "approved_by": "Dashboard Test",
+        "paid_at": "2026-08-31"
+      }
+    },
+    {
+      "id": "appr-d40a2b7e",
+      "status": "executed",
+      "kind": "rent",
+      "label": "Rent payment",
+      "ref_id": 1,
+      "amount": 2400.0,
+      "reason": "Rent is due 2026-09-02 and is the priority bill. The payment preview leaves $1,000 after rent.",
+      "proposed_at": "2026-10-31T05:28:20+00:00",
+      "proposed_by": "agent team",
+      "ticket_ids": [
+        101
+      ],
+      "run_ids": [
+        "run-20261031T052809Z-5b6df7"
+      ],
+      "decided_at": "2026-10-31T05:44:03+00:00",
+      "decided_by": "Tejesh Marsale",
+      "outcome": {
+        "executed": true,
+        "payment_id": 1,
+        "kind": "rent",
+        "ref_id": 1,
+        "amount": 2400.0,
+        "account": "checking",
+        "balance_after": 1000.0,
+        "approved_by": "Tejesh Marsale",
+        "paid_at": "2026-08-31"
+      }
+    },
+    {
+      "id": "appr-2c95f02f",
+      "status": "executed",
+      "kind": "invoice",
+      "label": "Vendor invoice (purchase) payment",
+      "ref_id": 501,
+      "amount": 840.0,
+      "reason": "Overdue invoice for the rush reprint of the requested, currently out-of-stock CC-TEE-WHITE size S. After rent, the preview leaves $160.",
+      "proposed_at": "2026-10-31T05:28:20+00:00",
+      "proposed_by": "agent team",
+      "ticket_ids": [
+        101
+      ],
+      "run_ids": [
+        "run-20261031T052809Z-5b6df7"
+      ],
+      "decided_at": "2026-10-31T05:44:15+00:00",
+      "decided_by": "Tejesh Marsale",
+      "outcome": {
+        "executed": true,
+        "payment_id": 2,
+        "kind": "invoice",
+        "ref_id": 501,
+        "amount": 840.0,
+        "account": "checking",
+        "balance_after": 160.0,
+        "approved_by": "Tejesh Marsale",
+        "paid_at": "2026-08-31"
+      }
+    },
+    {
+      "id": "appr-4aab0a6b",
+      "status": "executed",
+      "kind": "rent",
+      "label": "Rent payment",
+      "ref_id": 1,
+      "amount": 2400.0,
+      "reason": "Rent is due 2026-09-02 and is the priority bill. The payment preview leaves $1,000 after rent.",
+      "proposed_at": "2026-10-31T05:47:04+00:00",
+      "proposed_by": "agent team",
+      "ticket_ids": [
+        101,
+        102
+      ],
+      "run_ids": [
+        "run-20261031T054655Z-0a10f0",
+        "run-20261031T054710Z-1664e2"
+      ],
+      "decided_at": "2026-10-31T16:34:53+00:00",
+      "decided_by": "Tejesh Marsale",
+      "outcome": {
+        "executed": true,
+        "payment_id": 1,
+        "kind": "rent",
+        "ref_id": 1,
+        "amount": 2400.0,
+        "account": "checking",
+        "balance_after": 1000.0,
+        "approved_by": "Tejesh Marsale",
+        "paid_at": "2026-08-31"
+      }
+    },
+    {
+      "id": "appr-96e545aa",
+      "status": "executed",
+      "kind": "invoice",
+      "label": "Vendor invoice (purchase) payment",
+      "ref_id": 501,
+      "amount": 840.0,
+      "reason": "Overdue invoice for the rush reprint of the requested, currently out-of-stock CC-TEE-WHITE size S. After rent, the preview leaves $160.",
+      "proposed_at": "2026-10-31T05:47:04+00:00",
+      "proposed_by": "agent team",
+      "ticket_ids": [
+        101
+      ],
+      "run_ids": [
+        "run-20261031T054655Z-0a10f0"
+      ],
+      "decided_at": "2026-10-31T16:34:58+00:00",
+      "decided_by": "Tejesh Marsale",
+      "outcome": {
+        "executed": true,
+        "payment_id": 2,
+        "kind": "invoice",
+        "ref_id": 501,
+        "amount": 840.0,
+        "account": "checking",
+        "balance_after": 160.0,
+        "approved_by": "Tejesh Marsale",
+        "paid_at": "2026-08-31"
+      }
+    }
+  ]
+}

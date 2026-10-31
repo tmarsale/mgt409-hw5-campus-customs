@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campus Customs Resolved Board: HW5 Problem 9</title>
+<style>
+  :root {
+    --bg: #0b0b0f; --panel: #15151c; --panel-2: #1d1d27; --line: #2c2c3a;
+    --text: #f3f1f5; --muted: #b9b4c2; --pink: #ff3d9a; --pink-soft: #ff8cc6;
+    --ok: #7ee2b8; --warn: #ffcf7a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 20px 64px; }
+  a { color: var(--pink-soft); }
+  code { font-family: Consolas, "Cascadia Mono", Menlo, monospace; font-size: .9em; background: var(--panel-2); color: var(--pink-soft); padding: .1em .35em; border-radius: 4px; }
+  .eyebrow { color: var(--pink); text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; font-weight: 700; margin: 0 0 6px; }
+  h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); line-height: 1.2; margin: 0 0 10px; }
+  h2 { font-size: 1.5rem; margin: 0; }
+  h3 { font-size: 1rem; color: var(--pink-soft); margin: 18px 0 8px; }
+  .lede { color: var(--muted); max-width: 75ch; margin: 0; }
+  .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin: 22px 0; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+  .label { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; }
+  .value { font-size: 1.5rem; font-weight: 800; }
+  .note { color: var(--muted); font-size: .88rem; }
+  nav.jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 28px; }
+  nav.jump a { text-decoration: none; border: 1px solid var(--line); background: var(--panel); padding: 6px 14px; border-radius: 999px; color: var(--text); }
+  nav.jump a:hover { border-color: var(--pink); }
+  section.ticket { margin-top: 34px; padding-top: 10px; border-top: 1px solid var(--line); }
+  .head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+  .pills { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pill { font-size: .8rem; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
+  .pill.ok { color: var(--ok); border-color: rgba(126, 226, 184, .5); }
+  .pill.warn { color: var(--warn); border-color: rgba(255, 207, 122, .5); }
+  .pill.db { color: var(--muted); border-color: var(--line); }
+  .cols { display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); align-items: start; margin-top: 14px; }
+  @media (max-width: 900px) { .cols { grid-template-columns: 1fr; } }
+  ul { margin: 0; padding-left: 1.2em; }
+  li { margin: 4px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+  th, td { text-align: left; padding: 8px 10px; border-top: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--pink-soft); font-size: .78rem; text-transform: uppercase; letter-spacing: .07em; border-top: none; }
+  td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .shot { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--panel); }
+  .shot .frame { max-height: 820px; overflow-y: auto; }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot figcaption { padding: 10px 14px; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .callout { border-left: 4px solid var(--warn); background: rgba(255, 207, 122, .07); padding: 12px 16px; border-radius: 10px; margin: 18px 0; }
+  footer { margin-top: 48px; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); padding-top: 16px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">MGT 409 · Homework 5 · Problem 9</p>
+  <h1>Campus Customs Resolved Board</h1>
+  <p class="lede">The final state of tickets 101–103 after the five-agent team (<code>gpt-6-luna</code> via Portkey) ran from the React dashboard on 2026-10-31. Payments were executed only after human approval. The screenshots are full-page captures of the live dashboard after the payments and status changes, one per ticket.</p>
+</header>
+
+<div class="grid" aria-label="Summary">
+  <div class="card"><div class="label">Starting balance</div><div class="value">$3,400.00</div><div class="note">After reset · 0 payments</div></div>
+  <div class="card"><div class="label">Approved payments</div><div class="value">−$3,240.00</div><div class="note">Rent $2,400 + invoice 501 $840</div></div>
+  <div class="card"><div class="label">Final balance</div><div class="value">$160.00</div><div class="note">Verified in the database · never negative</div></div>
+  <div class="card"><div class="label">Resolved</div><div class="value">1 / 3</div><div class="note">102 resolved; 101 waiting on customer; 103 in progress</div></div>
+</div>
+
+<div class="callout"><strong>Ticket statuses</strong> (set by Tejesh Marsale in the dashboard at 16:49 UTC and confirmed in the database): 102 → <strong>Resolved</strong> (rent paid), 101 → <strong>Waiting on customer</strong>, 103 → <strong>In progress</strong>. Only 102 is resolved, because it is the only ticket whose business issue is addressed. Ticket 101 was briefly set to Resolved by mistake and corrected 16 seconds later; both changes are in the audit trail.</div>
+
+<nav class="jump" aria-label="Jump to ticket">
+  <a href="#t101">#101 Bulldog tee</a><a href="#t102">#102 Rent due</a><a href="#t103">#103 Bulk hoodie discount</a>
+</nav>
+
+<!-- ============================================================ 101 -->
+<section class="ticket" id="t101" aria-labelledby="h101">
+  <div class="head">
+    <div>
+      <p class="eyebrow">Ticket #101 · Customer order · Tauhid Zaman</p>
+      <h2 id="h101">Bulldog tee, size S</h2>
+    </div>
+    <div class="pills">
+      <span class="pill warn">Not resolved: waiting on customer</span>
+      <span class="pill db">Database: waiting_on_customer</span>
+    </div>
+  </div>
+  <div class="cols">
+    <div>
+      <h3>Outcome</h3>
+      <p>Size S is out of stock (M 5, L 3, XL 2). The overdue reprint invoice 501 ($840, Bulldog Print Co) was <strong>paid with your approval</strong>, so the restock is no longer held up by an unpaid bill. The earliest estimated restock is 2026-09-05 (5-day lead time). Tauhid still has no tee.</p>
+      <h3>Still blocking</h3>
+      <ul>
+        <li>Tauhid must pick an in-stock size or wait for the reprint.</li>
+        <li>The reply is a draft; a person must send it.</li>
+      </ul>
+      <h3>Agents</h3>
+      <ul>
+        <li><strong>Boss:</strong> routed the ticket and combined the results (3 tool calls).</li>
+        <li><strong>Inventory</strong> (asked by Boss, Accounting): 0 in size S, linked invoice, 5-day lead time.</li>
+        <li><strong>Accounting:</strong> previewed rent first, then the invoice: $3,400 → $1,000 → $160.</li>
+        <li><strong>Customer Service:</strong> drafted a reply offering M, L, or XL, or waiting about 5 days.</li>
+        <li>Facilities: not involved.</li>
+      </ul>
+      <h3>Human approvals</h3>
+      <table>
+        <thead><tr><th>Payment</th><th>Approved by</th><th class="num">Amount</th><th class="num">Checking after</th></tr></thead>
+        <tbody>
+          <tr><td>Rent, lease 1 (shared with #102)</td><td>Tejesh Marsale · 16:34:53 UTC</td><td class="num">$2,400.00</td><td class="num">$1,000.00</td></tr>
+          <tr><td>Invoice 501 (reprint purchase)</td><td>Tejesh Marsale · 16:34:58 UTC</td><td class="num">$840.00</td><td class="num">$160.00</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Run <code>run-20261031T054655Z-0a10f0</code> · 4 hand-offs · 10 MCP tool calls · 34,427 tokens</p>
+    </div>
+    <figure class="shot">
+      <div class="frame"><img src="screenshots/ticket101_full.png" alt="Dashboard showing ticket 101: team decision, agent cards (Boss, Inventory, Accounting, Customer Service done; Facilities not involved), conversation feed, customer draft, and checking balance $160.00 with rent and invoice 501 paid" loading="lazy"></div>
+      <figcaption><span>Dashboard after approval, ticket #101 (scroll inside the frame)</span><a href="screenshots/ticket101_full.png">Open full size</a></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================================================ 102 -->
+<section class="ticket" id="t102" aria-labelledby="h102">
+  <div class="head">
+    <div>
+      <p class="eyebrow">Ticket #102 · Rent notice · Elm City Properties</p>
+      <h2 id="h102">Rent due</h2>
+    </div>
+    <div class="pills">
+      <span class="pill ok">Resolved: rent paid</span>
+      <span class="pill db">Database: resolved</span>
+    </div>
+  </div>
+  <div class="cols">
+    <div>
+      <h3>Outcome</h3>
+      <p>The notice matched lease 1 ($2,400, due 2026-09-02). Rent was <strong>paid with your approval</strong> two days before it was due: checking went $3,400.00 → $1,000.00 (payment #1). This is the one ticket whose business issue is fully addressed, so it is marked Resolved (set at 16:49:46 UTC).</p>
+      <h3>Agents</h3>
+      <ul>
+        <li><strong>Boss:</strong> asked Facilities first, then Accounting (3 tool calls).</li>
+        <li><strong>Facilities:</strong> confirmed the notice matches the lease and that no rent was recorded yet; handed off to Accounting.</li>
+        <li><strong>Accounting</strong> (asked by Boss and Facilities, so the check was done twice): previewed rent only, leaving $1,000.</li>
+        <li>Inventory and Customer Service: not involved.</li>
+      </ul>
+      <h3>Human approvals</h3>
+      <table>
+        <thead><tr><th>Payment</th><th>Approved by</th><th class="num">Amount</th><th class="num">Checking after</th></tr></thead>
+        <tbody><tr><td>Rent, lease 1</td><td>Tejesh Marsale · 16:34:53 UTC</td><td class="num">$2,400.00</td><td class="num">$1,000.00</td></tr></tbody>
+      </table>
+      <p class="note">Run <code>run-20261031T054710Z-1664e2</code> · 3 hand-offs · 11 MCP tool calls · 29,620 tokens</p>
+    </div>
+    <figure class="shot">
+      <div class="frame"><img src="screenshots/ticket102_full.png" alt="Dashboard showing ticket 102: team decision to pay rent first, Boss, Facilities and Accounting done, conversation feed, and checking balance $160.00 with rent paid" loading="lazy"></div>
+      <figcaption><span>Dashboard after approval, ticket #102</span><a href="screenshots/ticket102_full.png">Open full size</a></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================================================ 103 -->
+<section class="ticket" id="t103" aria-labelledby="h103">
+  <div class="head">
+    <div>
+      <p class="eyebrow">Ticket #103 · Price override · Yale AI Club</p>
+      <h2 id="h103">Bulk hoodie discount</h2>
+    </div>
+    <div class="pills">
+      <span class="pill warn">Not resolved: in progress</span>
+      <span class="pill db">Database: in_progress</span>
+    </div>
+  </div>
+  <div class="cols">
+    <div>
+      <h3>Outcome</h3>
+      <p>Only 8 of the 20 requested size-M hoodies are in stock (S 4, L 14, XL 6). Cost $22, list $58, $36 margin, break-even discount 62.07%. The team proposed <strong>no payment and no discount</strong> and drafted a holding reply. No price was agreed.</p>
+      <h3>Still blocking</h3>
+      <ul>
+        <li>You need to choose a discount. The agents only tested 62%, which leaves $0.04 per hoodie ($0.80 on 20).</li>
+        <li>Size M is short by 12, with no restock source or timeline in the data.</li>
+        <li>The draft needs editing (it contains the stray text "(evaluate_bulk_discount)" and doesn't offer other sizes) before a person sends it.</li>
+      </ul>
+      <h3>Agents</h3>
+      <ul>
+        <li><strong>Boss:</strong> asked Inventory, then Accounting, then Customer Service (3 tool calls).</li>
+        <li><strong>Inventory:</strong> 8 in size M, short 12.</li>
+        <li><strong>Accounting:</strong> margin and break-even; advised a discount well below 62.07%.</li>
+        <li><strong>Customer Service:</strong> drafted a reply saying 8 are available and pricing is under review.</li>
+        <li>Facilities: not involved.</li>
+      </ul>
+      <h3>Human approvals</h3>
+      <p>None needed: no payment was proposed.</p>
+      <p class="note">Run <code>run-20261031T054724Z-e34edc</code> · 3 hand-offs · 9 MCP tool calls · 30,978 tokens</p>
+    </div>
+    <figure class="shot">
+      <div class="frame"><img src="screenshots/ticket103_full.png" alt="Dashboard showing ticket 103: team decision with 8 of 20 hoodies available and no discount approved, agent cards, conversation feed, customer draft marked Draft not sent, and checking balance $160.00" loading="lazy"></div>
+      <figcaption><span>Dashboard after approval, ticket #103</span><a href="screenshots/ticket103_full.png">Open full size</a></figcaption>
+    </figure>
+  </div>
+</section>
+
+<footer>
+  Screenshots were captured from the running dashboard (<code>http://localhost:5173</code>, backend <code>http://localhost:8000</code>) with headless Microsoft Edge at 1440 px wide, by clicking each ticket card. Details: <code>output/resolved_tickets.json</code>, <code>output/desk_tickets.html</code> (Actual and Cash tabs), and <code>output/audit_trail.json</code>.
+</footer>
+</div>
+</body>
+</html>

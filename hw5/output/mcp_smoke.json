@@ -1,0 +1,595 @@
+{
+  "run_at": "2026-10-31T03:45:24+00:00",
+  "transport": "stdio, launched from .mcp.json (server 'campus-customs')",
+  "database": "data/campus_customs_new.db (read-only)",
+  "tools_listed_by_server": [
+    "check_cash_for_rent",
+    "check_order_fulfillment",
+    "evaluate_bulk_discount"
+  ],
+  "tests": [
+    {
+      "ticket": 101,
+      "prompt": "Use the campus-customs MCP tool check_order_fulfillment to look up ticket 101, then briefly report whether the order can be filled and why.",
+      "tool": "check_order_fulfillment",
+      "arguments": {
+        "ticket_id": 101
+      },
+      "response": {
+        "today": "2026-08-31",
+        "ticket": {
+          "id": 101,
+          "type": "customer_order",
+          "requester": "Tauhid Zaman",
+          "subject": "Bulldog tee",
+          "sku": "CC-TEE-WHITE",
+          "size": "S",
+          "qty": 1,
+          "lease_id": null,
+          "invoice_id": 501,
+          "status": "open",
+          "notes": "Needs a tee in size S.",
+          "created_at": "2026-08-31T09:15:00-04:00"
+        },
+        "product": "Classic Bulldog Tee",
+        "location": "Aisle B",
+        "requested_qty": 1,
+        "in_stock_qty": 0,
+        "can_fill_now": false,
+        "shortfall": 1,
+        "other_sizes_in_stock": {
+          "L": 3,
+          "M": 5,
+          "XL": 2
+        },
+        "list_price": 28.0,
+        "unit_cost": 8.0,
+        "linked_invoice": {
+          "invoice_id": 501,
+          "description": "Rush reprint CC-TEE-WHITE S",
+          "amount": 840.0,
+          "due_date": "2026-08-28",
+          "status": "open",
+          "days_overdue": 3,
+          "vendor": "Bulldog Print Co",
+          "vendor_specialty": "apparel reprint",
+          "vendor_lead_days": 5
+        }
+      },
+      "db_checks": [
+        {
+          "field": "in_stock_qty",
+          "expected_from_db": 0,
+          "mcp_response": 0,
+          "match": true
+        },
+        {
+          "field": "can_fill_now",
+          "expected_from_db": false,
+          "mcp_response": false,
+          "match": true
+        },
+        {
+          "field": "linked_invoice.amount",
+          "expected_from_db": 840.0,
+          "mcp_response": 840.0,
+          "match": true
+        },
+        {
+          "field": "linked_invoice.due_date",
+          "expected_from_db": "2026-08-28",
+          "mcp_response": "2026-08-28",
+          "match": true
+        },
+        {
+          "field": "linked_invoice.status",
+          "expected_from_db": "open",
+          "mcp_response": "open",
+          "match": true
+        },
+        {
+          "field": "linked_invoice.vendor_lead_days",
+          "expected_from_db": 5,
+          "mcp_response": 5,
+          "match": true
+        }
+      ],
+      "all_checks_match": true
+    },
+    {
+      "ticket": 102,
+      "prompt": "Use the campus-customs MCP tool check_cash_for_rent to look up ticket 102, then briefly report whether the store can pay the rent and how much cash would be left.",
+      "tool": "check_cash_for_rent",
+      "arguments": {
+        "ticket_id": 102
+      },
+      "response": {
+        "today": "2026-08-31",
+        "ticket": {
+          "id": 102,
+          "type": "rent_notice",
+          "requester": "Elm City Properties",
+          "subject": "Rent due",
+          "sku": null,
+          "size": null,
+          "qty": null,
+          "lease_id": 1,
+          "invoice_id": null,
+          "status": "open",
+          "notes": "Email: shop rent due in 2 days.",
+          "created_at": "2026-08-31T11:05:00-04:00"
+        },
+        "lease": {
+          "lease_id": 1,
+          "space_name": "Chapel Street shop",
+          "landlord": "Elm City Properties",
+          "monthly_rent": 2400.0,
+          "next_due": "2026-09-02",
+          "days_until_due": 2
+        },
+        "cash_accounts": [
+          {
+            "name": "checking",
+            "balance": 3400.0,
+            "as_of": "2026-08-31"
+          }
+        ],
+        "total_cash": 3400.0,
+        "open_invoices": [
+          {
+            "invoice_id": 501,
+            "vendor": "Bulldog Print Co",
+            "amount": 840.0,
+            "due_date": "2026-08-28",
+            "days_overdue": 3,
+            "description": "Rush reprint CC-TEE-WHITE S"
+          }
+        ],
+        "open_invoices_total": 840.0,
+        "payments_already_recorded": [],
+        "cash_after_rent": 1000.0,
+        "cash_after_rent_and_open_invoices": 160.0,
+        "can_pay_rent": true,
+        "can_pay_rent_and_open_invoices": true
+      },
+      "db_checks": [
+        {
+          "field": "lease.monthly_rent",
+          "expected_from_db": 2400.0,
+          "mcp_response": 2400.0,
+          "match": true
+        },
+        {
+          "field": "lease.next_due",
+          "expected_from_db": "2026-09-02",
+          "mcp_response": "2026-09-02",
+          "match": true
+        },
+        {
+          "field": "total_cash",
+          "expected_from_db": 3400.0,
+          "mcp_response": 3400.0,
+          "match": true
+        },
+        {
+          "field": "open_invoices_total",
+          "expected_from_db": 840.0,
+          "mcp_response": 840.0,
+          "match": true
+        },
+        {
+          "field": "cash_after_rent",
+          "expected_from_db": 1000.0,
+          "mcp_response": 1000.0,
+          "match": true
+        },
+        {
+          "field": "cash_after_rent_and_open_invoices",
+          "expected_from_db": 160.0,
+          "mcp_response": 160.0,
+          "match": true
+        }
+      ],
+      "all_checks_match": true
+    },
+    {
+      "ticket": 103,
+      "prompt": "Use the campus-customs MCP tool evaluate_bulk_discount to look up ticket 103 without a discount, then briefly report the stock situation and the largest discount before a loss.",
+      "tool": "evaluate_bulk_discount",
+      "arguments": {
+        "ticket_id": 103
+      },
+      "response": {
+        "today": "2026-08-31",
+        "ticket": {
+          "id": 103,
+          "type": "price_override",
+          "requester": "Yale AI Club",
+          "subject": "Bulk hoodie discount",
+          "sku": "CC-HOOD-NAVY",
+          "size": "M",
+          "qty": 20,
+          "lease_id": null,
+          "invoice_id": null,
+          "status": "open",
+          "notes": "Student org wants 20 hoodies, size M, asking for a bulk discount.",
+          "created_at": "2026-08-31T16:55:00-04:00"
+        },
+        "product": "Basic Hoodie Big Yale",
+        "location": "Aisle A",
+        "requested_qty": 20,
+        "requested_size": "M",
+        "in_stock_requested_size": 8,
+        "shortfall_in_requested_size": 12,
+        "stock_by_size": {
+          "L": 14,
+          "M": 8,
+          "S": 4,
+          "XL": 6
+        },
+        "total_stock_all_sizes": 32,
+        "unit_cost": 22.0,
+        "list_price": 58.0,
+        "margin_per_unit_at_list": 36.0,
+        "max_discount_percent_before_loss": 62.07,
+        "order_revenue_at_list": 1160.0,
+        "order_profit_at_list": 720.0
+      },
+      "db_checks": [
+        {
+          "field": "in_stock_requested_size",
+          "expected_from_db": 8,
+          "mcp_response": 8,
+          "match": true
+        },
+        {
+          "field": "total_stock_all_sizes",
+          "expected_from_db": 32,
+          "mcp_response": 32,
+          "match": true
+        },
+        {
+          "field": "unit_cost",
+          "expected_from_db": 22.0,
+          "mcp_response": 22.0,
+          "match": true
+        },
+        {
+          "field": "list_price",
+          "expected_from_db": 58.0,
+          "mcp_response": 58.0,
+          "match": true
+        },
+        {
+          "field": "margin_per_unit_at_list",
+          "expected_from_db": 36.0,
+          "mcp_response": 36.0,
+          "match": true
+        }
+      ],
+      "all_checks_match": true
+    }
+  ],
+  "all_tests_pass": true,
+  "claude_code_check": {
+    "client": "Claude Code desktop app (Code tab) session, server 'campus-customs' loaded from .mcp.json",
+    "run_on": "2026-10-30",
+    "server_status": "connected",
+    "tools_seen_by_claude_code": [
+      "mcp__campus-customs__check_cash_for_rent",
+      "mcp__campus-customs__check_order_fulfillment",
+      "mcp__campus-customs__evaluate_bulk_discount"
+    ],
+    "tool_calls_completed": true,
+    "calls": [
+      {
+        "ticket": 101,
+        "prompt": "`check_order_fulfillment` with ticket_id 101",
+        "tool_name_seen_by_claude_code": "mcp__campus-customs__check_order_fulfillment",
+        "arguments": {
+          "ticket_id": 101
+        },
+        "response": {
+          "today": "2026-08-31",
+          "ticket": {
+            "id": 101,
+            "type": "customer_order",
+            "requester": "Tauhid Zaman",
+            "subject": "Bulldog tee",
+            "sku": "CC-TEE-WHITE",
+            "size": "S",
+            "qty": 1,
+            "lease_id": null,
+            "invoice_id": 501,
+            "status": "open",
+            "notes": "Needs a tee in size S.",
+            "created_at": "2026-08-31T09:15:00-04:00"
+          },
+          "product": "Classic Bulldog Tee",
+          "location": "Aisle B",
+          "requested_qty": 1,
+          "in_stock_qty": 0,
+          "can_fill_now": false,
+          "shortfall": 1,
+          "other_sizes_in_stock": {
+            "L": 3,
+            "M": 5,
+            "XL": 2
+          },
+          "list_price": 28,
+          "unit_cost": 8,
+          "linked_invoice": {
+            "invoice_id": 501,
+            "description": "Rush reprint CC-TEE-WHITE S",
+            "amount": 840,
+            "due_date": "2026-08-28",
+            "status": "open",
+            "days_overdue": 3,
+            "vendor": "Bulldog Print Co",
+            "vendor_specialty": "apparel reprint",
+            "vendor_lead_days": 5
+          }
+        },
+        "db_checks": [
+          {
+            "field": "ticket.size",
+            "expected_from_db": "S",
+            "claude_code_response": "S",
+            "smoke_test_response": "S",
+            "match_db": true,
+            "match_tests": true
+          },
+          {
+            "field": "in_stock_qty",
+            "expected_from_db": 0,
+            "claude_code_response": 0,
+            "smoke_test_response": 0,
+            "match_db": true,
+            "match_tests": true
+          },
+          {
+            "field": "linked_invoice.invoice_id",
+            "expected_from_db": 501,
+            "claude_code_response": 501,
+            "smoke_test_response": 501,
+            "match_db": true,
+            "match_tests": true
+          },
+          {
+            "field": "linked_invoice.amount",
+            "expected_from_db": 840.0,
+            "claude_code_response": 840,
+            "smoke_test_response": 840.0,
+            "match_db": true,
+            "match_tests": true
+          },
+          {
+            "field": "linked_invoice.due_date",
+            "expected_from_db": "2026-08-28",
+            "claude_code_response": "2026-08-28",
+            "smoke_test_response": "2026-08-28",
+            "match_db": true,
+            "match_tests": true
+          },
+          {
+            "field": "linked_invoice.status",
+            "expected_from_db": "open",
+            "claude_code_response": "open",
+            "smoke_test_response": "open",
+            "match_db": true,
+            "match_tests": true
+          },
+          {
+            "field": "linked_invoice.vendor_lead_days",
+            "expected_from_db": 5,
+            "claude_code_response": 5,
+            "smoke_test_response": 5,
+            "match_db": true,
+            "match_tests": true
+          }
+        ],
+        "all_checks_match_db": true,
+        "full_response_matches_tests_entry": true
+      },
+      {
+        "ticket": 102,
+        "prompt": "`check_cash_for_rent` with ticket_id 102",
+        "tool_name_seen_by_claude_code": "mcp__campus-customs__check_cash_for_rent",
+        "arguments": {
+          "ticket_id": 102
+        },
+        "response": {
+          "today": "2026-08-31",
+          "ticket": {
+            "id": 102,
+            "type": "rent_notice",
+            "requester": "Elm City Properties",
+            "subject": "Rent due",
+            "sku": null,
+            "size": null,
+            "qty": null,
+            "lease_id": 1,
+            "invoice_id": null,
+            "status": "open",
+            "notes": "Email: shop rent due in 2 days.",
+            "created_at": "2026-08-31T11:05:00-04:00"
+          },
+          "lease": {
+            "lease_id": 1,
+            "space_name": "Chapel Street shop",
+            "landlord": "Elm City Properties",
+            "monthly_rent": 2400,
+            "next_due": "2026-09-02",
+            "days_until_due": 2
+          },
+          "cash_accounts": [
+            {
+              "name": "checking",
+              "balance": 3400,
+              "as_of": "2026-08-31"
+            }
+          ],
+          "total_cash": 3400,
+          "open_invoices": [
+            {
+              "invoice_id": 501,
+              "vendor": "Bulldog Print Co",
+              "amount": 840,
+              "due_date": "2026-08-28",
+              "days_overdue": 3,
+              "description": "Rush reprint CC-TEE-WHITE S"
+            }
+          ],
+          "open_invoices_total": 840,
+          "payments_already_recorded": [],
+          "cash_after_rent": 1000,
+          "cash_after_rent_and_open_invoices": 160,
+          "can_pay_rent": true,
+          "can_pay_rent_and_open_invoices": true
+        },
+        "db_checks": [
+          {
+            "field": "lease.monthly_rent",
+            "expected_from_db": 2400.0,
+            "claude_code_response": 2400,
+            "smoke_test_response": 2400.0,
+            "match_db": true,
+            "match_tests": true
+          },
+          {
+            "field": "lease.next_due",
+            "expected_from_db": "2026-09-02",
+            "claude_code_response": "2026-09-02",
+            "smoke_test_response": "2026-09-02",
+            "match_db": true,
+            "match_tests": true
+          },
+          {
+            "field": "total_cash",
+            "expected_from_db": 3400.0,
+            "claude_code_response": 3400,
+            "smoke_test_response": 3400.0,
+            "match_db": true,
+            "match_tests": true
+          },
+          {
+            "field": "cash_after_rent",
+            "expected_from_db": 1000.0,
+            "claude_code_response": 1000,
+            "smoke_test_response": 1000.0,
+            "match_db": true,
+            "match_tests": true
+          },
+          {
+            "field": "cash_after_rent_and_open_invoices",
+            "expected_from_db": 160.0,
+            "claude_code_response": 160,
+            "smoke_test_response": 160.0,
+            "match_db": true,
+            "match_tests": true
+          }
+        ],
+        "all_checks_match_db": true,
+        "full_response_matches_tests_entry": true
+      },
+      {
+        "ticket": 103,
+        "prompt": "`evaluate_bulk_discount` with ticket_id 103 (no discount)",
+        "tool_name_seen_by_claude_code": "mcp__campus-customs__evaluate_bulk_discount",
+        "arguments": {
+          "ticket_id": 103
+        },
+        "response": {
+          "today": "2026-08-31",
+          "ticket": {
+            "id": 103,
+            "type": "price_override",
+            "requester": "Yale AI Club",
+            "subject": "Bulk hoodie discount",
+            "sku": "CC-HOOD-NAVY",
+            "size": "M",
+            "qty": 20,
+            "lease_id": null,
+            "invoice_id": null,
+            "status": "open",
+            "notes": "Student org wants 20 hoodies, size M, asking for a bulk discount.",
+            "created_at": "2026-08-31T16:55:00-04:00"
+          },
+          "product": "Basic Hoodie Big Yale",
+          "location": "Aisle A",
+          "requested_qty": 20,
+          "requested_size": "M",
+          "in_stock_requested_size": 8,
+          "shortfall_in_requested_size": 12,
+          "stock_by_size": {
+            "L": 14,
+            "M": 8,
+            "S": 4,
+            "XL": 6
+          },
+          "total_stock_all_sizes": 32,
+          "unit_cost": 22,
+          "list_price": 58,
+          "margin_per_unit_at_list": 36,
+          "max_discount_percent_before_loss": 62.07,
+          "order_revenue_at_list": 1160,
+          "order_profit_at_list": 720
+        },
+        "db_checks": [
+          {
+            "field": "requested_size",
+            "expected_from_db": "M",
+            "claude_code_response": "M",
+            "smoke_test_response": "M",
+            "match_db": true,
+            "match_tests": true
+          },
+          {
+            "field": "in_stock_requested_size",
+            "expected_from_db": 8,
+            "claude_code_response": 8,
+            "smoke_test_response": 8,
+            "match_db": true,
+            "match_tests": true
+          },
+          {
+            "field": "total_stock_all_sizes",
+            "expected_from_db": 32,
+            "claude_code_response": 32,
+            "smoke_test_response": 32,
+            "match_db": true,
+            "match_tests": true
+          },
+          {
+            "field": "unit_cost",
+            "expected_from_db": 22.0,
+            "claude_code_response": 22,
+            "smoke_test_response": 22.0,
+            "match_db": true,
+            "match_tests": true
+          },
+          {
+            "field": "list_price",
+            "expected_from_db": 58.0,
+            "claude_code_response": 58,
+            "smoke_test_response": 58.0,
+            "match_db": true,
+            "match_tests": true
+          },
+          {
+            "field": "margin_per_unit_at_list",
+            "expected_from_db": 36.0,
+            "claude_code_response": 36,
+            "smoke_test_response": 36.0,
+            "match_db": true,
+            "match_tests": true
+          }
+        ],
+        "all_checks_match_db": true,
+        "full_response_matches_tests_entry": true
+      }
+    ],
+    "all_calls_match_db": true,
+    "all_calls_match_tests": true
+  }
+}

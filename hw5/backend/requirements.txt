@@ -1,0 +1,12 @@
+# Campus Customs agent team (HW5 Problem 5)
+# The [mcp] extra is a deliberate addition to pydantic-ai-slim[openai]: the agents reach the
+# campus-customs MCP server through PydanticAI's MCPToolset.
+pydantic-ai-slim[openai,mcp]
+fastmcp
+python-dotenv
+# FastAPI backend (Problem 7): run from backend/ with  uvicorn main:app --reload --port 8000
+fastapi
+uvicorn
+# Pinned because Windows Application Control on this PC blocks the DLLs in newer builds.
+jiter==0.17.0
+regex==2026.9.10
